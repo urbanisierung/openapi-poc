@@ -1,0 +1,162 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"PingResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PingPostBody": {
+				"properties": {
+					"name2": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name2"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "access_token",
+				"in": "query"
+			},
+			"bearer": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
+	},
+	"info": {
+		"title": "camunda-cloud-external-api-docs",
+		"version": "1.0.0",
+		"description": "description",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "adam.urban@gmail.com"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/api/ping": {
+			"get": {
+				"operationId": "GetMessage",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PingResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/ping/nice/nice": {
+			"get": {
+				"operationId": "GetNice",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PingResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/ping/{name}": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "name",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PingPostBody"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
