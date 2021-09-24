@@ -45,7 +45,7 @@
 		}
 	},
 	"info": {
-		"title": "camunda-cloud-external-api-docs",
+		"title": "openapi-poc",
 		"version": "1.0.0",
 		"description": "description",
 		"license": {
